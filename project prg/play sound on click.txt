@@ -1,0 +1,15 @@
+Import sun.audio.*;
+import java.io.*;
+
+
+Input Stream in;
+try{
+in =new FileInputStream(new File("");
+AudioStream audios=new AudioStream(in);
+AudioPlayer.player.start(audios);
+
+}
+catch(Exception e) {
+JOptionPane.showMessageDialog(null, e);
+}
+}

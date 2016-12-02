@@ -1,0 +1,11 @@
+ try{
+        
+        String URL="http://beintellect.blogspot.in/";
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
+        
+    }
+    catch(Exception e){
+        
+        JOptionPane.showMessageDialog(null,e.getMessage());
+    }
+    

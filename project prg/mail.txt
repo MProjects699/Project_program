@@ -1,0 +1,50 @@
+Java mail transfer with gmail smtp:
+===================================
+
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
+
+
+String From=from.getText();
+String To_add=To.getText();
+String Subject=subject.getext();
+String Text_content=Text.getText();
+
+
+
+Properties props=new Properties();
+     props.put("mail.smtp.host","smtp.gmail.com");
+     props.put("mail.smtp.socketFactory.port","465");
+     props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+     props.put("mail.smtp.auth","true");
+     props.put("mail.smtp.port","465");
+
+     Session session=Session.getDefaultInstance(props,
+     new javax.mail.Authenticator(){
+     protected PasswordAuthentication getPasswordAuthentication(){
+     return new PasswordAuthentication("xyz@gmail.com","password");
+    }
+    }
+
+    );
+
+   try{
+Message message=new MimeMessage(session);
+message.setFrom(new InternetAddress("xyz@gmail.com"));
+message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("abc@googlemail.com"));
+message.setSubject("hi this is me");
+message.setText("hi how r u, i am fine");
+Transport.send(message);
+JOptionPane.showMessageDialog(null, "message sent");
+
+} catch(Exception e) {
+
+JOptionPane.showMessageDialog(null, e);
+}
+
+}   
